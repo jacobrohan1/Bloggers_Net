@@ -1,0 +1,45 @@
+<!-- registration.html -->
+
+<h2>User Registration</h2>
+
+<form method="POST" style="max-width: 400px; margin: 0 auto;">
+  {% csrf_token %}
+
+  <div style="margin-bottom: 10px;">
+    <label for="id_username">Username:</label>
+    <input type="text" id="id_username" name="username" required>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <label for="id_password">Password:</label>
+    <input type="password" id="id_password" name="password" required>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <label for="id_email">Email:</label>
+    <input type="email" id="id_email" name="email" required>
+  </div>
+
+  <button type="submit" style="background-color: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Register</button>
+</form>
+
+<style>
+  /* CSS styles */
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+</style>

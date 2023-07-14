@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .view-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0066cc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .view-button:hover {
+            background-color: #0052a3;
+        }
+    </style>
+
+    <div class="container">
+        <h2>View Blogs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author ID</th>
+                    <th>Publication Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for blog_post in blog_posts %}
+                    <tr>
+                        <td>{{ blog_post.id }}</td>
+                        <td><a href="{% url 'view_blog_post' blog_post.id %}">{{ blog_post.title }}</a></td>
+                        <td>{{ blog_post.user.username }}</td>
+                        <td>{{ blog_post.created_at }}</td>
+                        <td><a href="{% url 'view_blog_post' blog_post.id %}" class="view-button">View</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

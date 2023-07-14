@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .meta-info {
+            text-align: center;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .content {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff5f6d;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #ff3d4d;
+        }
+    </style>
+
+    <div class="container">
+        <h2>{{ blog_post.title }}</h2>
+        <p class="meta-info"><strong>Author:</strong> {{ blog_post.user }}</p>
+        <p class="meta-info"><strong>Publication Date:</strong> {{ blog_post.created_at }}</p>
+        <div class="content">
+            {{ blog_post.content }}
+        </div>
+        <a href="{% url 'view_blogs' %}" class="back-link">Back to Blogs</a>
+    </div>
+{% endblock %}
